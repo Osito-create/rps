@@ -5,9 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="script.js"></script>
+    <script src="script.js">
+
+      function computerPlay() {
+        let randomNumber = Math.floor(Math.random() * 3);
+        switch (randomNumber) {
+          case 0:
+            return "ROCK";
+          case 1:
+            return "PAPER";
+          case 2:
+            return "SCISSORS";
+        }
+      }
+
+      let computerScore = 0;
+      let playerScore = 0;
+
+      function playRound(playerSelection, computerSelection) {
+        let log = "";
+
+        if (playerSelection === "Rock") {
+          if (computerSelection === "Paper") {
+            log = "You Lose! Paper beats Rock";
+          } else if (computerSelection === "Scissors") {
+            log = "You Win! Rock beats Scissors";
+          } else {
+            log = "It's a tie";
+          }
+        } else if (playerSelection === "Paper") {
+          if (computerSelection === "Scissors") {
+            log = "You Lose! Scissors beats Paper";
+          } else if (computerSelection === "Rock") {
+            log = "You Win! Paper beats Rock";
+          } else {
+            log = "It's a tie";
+          }
+        } else if (playerSelection === "Scissors") {
+          if (computerSelection === "Rock") {
+            log = "You Lose! Rock beats Scissors";
+          } else if (computerSelection === "Paper") {
+            log = "You Win! Scissors beats Paper";
+          } else {
+            log = "It's a tie";
+          }
+        }
+
+        return log;
+      }
+
+      function game() {
+        for (let i = 0; i < 5; i++) {
+          let playerSelection = prompt("Type: Rock, Paper, or Scissors");
+          playerSelection = playerSelection.toLowerCase();
+          const computerSelection = computerPlay();
+          console.log(playRound(playerSelection, computerSelection));
+        }
+        if (playerScore > computerScore) {
+          console.log(
+            `You're the winner! Final Score: ${playerScore} to ${computerScore}`
+          );
+        } else if (computerScore > playerScore) {
+          console.log(
+            `You're the loser. Final Score: ${playerScore} to ${computerScore}`
+          );
+        } else
+          console.log(`You tied. Final Score: ${playerScore} to ${computerScore}`);
+      }
+    </script>
   </body>
 </html>
