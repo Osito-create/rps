@@ -2,79 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="script.js">
+    <h1 class="heading">Rock, Paper, Scissors</h1>
+    <div class="container">
+      <div class="score">
+        <div class="player-score">0</div>
+        <div style="margin: 0px 50px">-</div>
+        <div class="computer-score">0</div>
+      </div>
+      <div class="message"></div>
+      <div class="d-flex">
+        <div class="card">
+          <div class="card-image" data-image="rock">
+            <img src="./images/rock.svg" alt="Rock" class="image" />
+          </div>
+          <div class="card-text">Rock</div>
+        </div>
+        <div class="card">
+          <div class="card-image" data-image="paper">
+            <img src="./images/paper.svg" alt="Paper" class="image" />
+          </div>
+          <div class="card-text">Paper</div>
+        </div>
+        <div class="card">
+          <div class="card-image" data-image="scissors">
+            <img src="./images/scissors.svg" alt="Scissors" class="image" />
+          </div>
+          <div class="card-text">Scissors</div>
+        </div>
+      </div>
+      <div class="dashboard">
+        <div class="dashboard-side">
+          <h2 class="headindg-sub">Player</h2>
+          <div class="player-selection">
+            <!-- <p>Rock</p> -->
+          </div>
+        </div>
+        <div class="dashboard-side">
+          <h2 class="headindg-sub">Computer</h2>
+          <div class="computer-selection">
+            <!-- <p>Paper</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
 
-      function computerPlay() {
-        let randomNumber = Math.floor(Math.random() * 3);
-        switch (randomNumber) {
-          case 0:
-            return "ROCK";
-          case 1:
-            return "PAPER";
-          case 2:
-            return "SCISSORS";
-        }
-      }
-
-      let computerScore = 0;
-      let playerScore = 0;
-
-      function playRound(playerSelection, computerSelection) {
-        let log = "";
-
-        if (playerSelection === "Rock") {
-          if (computerSelection === "Paper") {
-            log = "You Lose! Paper beats Rock";
-          } else if (computerSelection === "Scissors") {
-            log = "You Win! Rock beats Scissors";
-          } else {
-            log = "It's a tie";
-          }
-        } else if (playerSelection === "Paper") {
-          if (computerSelection === "Scissors") {
-            log = "You Lose! Scissors beats Paper";
-          } else if (computerSelection === "Rock") {
-            log = "You Win! Paper beats Rock";
-          } else {
-            log = "It's a tie";
-          }
-        } else if (playerSelection === "Scissors") {
-          if (computerSelection === "Rock") {
-            log = "You Lose! Rock beats Scissors";
-          } else if (computerSelection === "Paper") {
-            log = "You Win! Scissors beats Paper";
-          } else {
-            log = "It's a tie";
-          }
-        }
-
-        return log;
-      }
-
-      function game() {
-        for (let i = 0; i < 5; i++) {
-          let playerSelection = prompt("Type: Rock, Paper, or Scissors");
-          playerSelection = playerSelection.toLowerCase();
-          const computerSelection = computerPlay();
-          console.log(playRound(playerSelection, computerSelection));
-        }
-        if (playerScore > computerScore) {
-          console.log(
-            `You're the winner! Final Score: ${playerScore} to ${computerScore}`
-          );
-        } else if (computerScore > playerScore) {
-          console.log(
-            `You're the loser. Final Score: ${playerScore} to ${computerScore}`
-          );
-        } else
-          console.log(`You tied. Final Score: ${playerScore} to ${computerScore}`);
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
